@@ -39,7 +39,15 @@ printId(101);
 printId("202");
 
 // printId({ myID: 22342 }); // Error Argument of type '{ myID: number; }' is not assignable to parameter of type 'string | number'.
-
+// Narrow the union with code.
+function printId1(id: number | string) {
+  if (typeof id === "string") {
+    console.log("ID is", id.toUpperCase());
+  } else {
+    console.log(id);
+  }
+}
+printId1("ali");
 //* Working with union types with non-primitive data types
 function welcomePeople(x: string[] | string) {
   if (Array.isArray(x)) {
@@ -51,17 +59,6 @@ function welcomePeople(x: string[] | string) {
   }
 }
 welcomePeople(["Jameel", "Wasif"]);
-
-// Narrow the union with code.
-function printId1(id: number | string) {
-  if (typeof id === "string") {
-    console.log("ID is", id.toUpperCase());
-  } else {
-    console.log(id);
-  }
-}
-printId1("ali");
-
 // common types of array and string.
 function printId2(id: string[] | string) {
   console.log(id.slice(0, 3));
